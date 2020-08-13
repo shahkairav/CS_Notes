@@ -1,0 +1,68 @@
+- I/O operations are significantly slow. 
+
+
+- Applying a permutation vector to an array:
+	- Applying a permutation to an array can be done using extra O(1) space in O(n) time.
+
+	- Any permutation can be broken down into a set of disjoint permutation cycles. Refer to 6.9 of Element of Programming Interviews in C++. 
+
+
+- Finding the next permutation in the lexicographical order:
+	- Find the longest decreasing suffix of the permutation. 
+
+	- The element e just before the suffix is swapped with the smallest element from the suffix that is greater than e.
+
+	- The new permutation has the prefi right but the suffix still requires correction.
+
+	- Simply reversing the suffix sorts it into an increasing sequence. Hence, after reversing the suffix, we have our successive permutation.
+
+
+- Coupon Collector Problem:
+	- Consider a number k. On each iteration, a random number between 1 and k is revealed. How many iterations doees it take to collect all k values?
+
+	- Y_i = number of iterations required to collect i values. We are interested in E[Y_k].
+
+	- X_i = Y_{i+1} - Y_i. Therefore, Y_k = Sigma X_i
+
+	- X_i = geometric distribution(k-i/k)
+
+	- E[X_i] = 1/p = (k/k-i)
+
+	- Use linearity of expectations to calculate Y_k = k * lnk. 
+
+
+- Sequence vs Associative containers in C++:
+	- Sequence containers can access the elements sequentially. Also, all the elements should be of the same type. Examples: array, vector, deque, forward_list, list. 
+		- Insertion takes constant time.
+		- Front has constant amortised time.
+		- Insertion in the middle is linear.
+
+	- Associative containers store elements that have two important characteristics:
+		1. There exists a key. 
+		2. Elements follow strick weak ordering - transitive, irreflexive, asymmetric.
+	Examples: map, set, multimap, multiset.
+		- Insertion/Deletion is logarithmic.
+		- Searching is logarithmic.
+		- Incrementing/Decrementing an iterator is constant time.
+
+	- Every associative container has an associated(pun intended) unordered associative container which contains elements without any specific order. Examples: unordered_set, unordered_map etc.
+
+	- Sequential elements are accessed by indices while associative elements are accessed using keys. 
+
+
+- Bloom Filters:
+	- It is a data structure designed to tell you, rapidly and memory-efficiently, whether an element is present in a set.
+
+	- The price paid for this efficiency is that it is a probabilistic data structure: either the element is DEFINITELY not in the set or it MAYBE in the set.
+
+	- 
+
+
+- Fibonacci Heaps:
+	- This data structure is an improvisation of binomial heaps by efficiently implementing the "decrease_key" and "delete" function in ammortised O(1) time.
+
+	- 
+
+
+- Red-Black Trees:
+	- 

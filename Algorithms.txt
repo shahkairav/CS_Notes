@@ -1,0 +1,135 @@
+--> SORTING:
+
+1. Bubble Sort:
+	- 
+
+	- Time Complexity: O(n^2)  
+
+	- Code:
+	template <class T> 
+	void bubbleSort(T a[], int n) { 
+	    for(int i = 0; i < n-1; i++) 
+	        for(int j = n-1; i < j; j--) 
+	            if (a[j] < a[j-1]) swap(a[j], a[j-1]); 
+	}
+
+2. Quick Sort:
+	- It is a divide and conquer algorithm. It chooses an element as pivot and partitions the array into three segments:
+		1. less than pivot
+		2. equal to pivot
+		3. greater than pivot
+
+	- 
+
+3. Heap Sort:
+
+4. Insertion Sort:
+
+5. Selection Sort:
+
+6. Dutch National Flag algorithm:
+	- The array consists of only three values (the intent is that the array contains complex objects that have a member that takes 3 different values).
+
+	- The algorithm partitions the array in place in O(n) time and O(1) space.
+
+	- Code:
+	int low = 0; int mid = 0; int high = n-1;
+	while(mid <= high) {
+		if(arr[mid] == 0) {
+			swap(arr[low++], arr[mid++]);
+		}
+		else if(arr[mid] == 1) {
+			mid++;
+		}
+		else {
+			swap(arr[mid], arr[high--]);
+		}
+	}
+
+
+--> MATHEMATICS:
+
+1. Binary Exponentiation:
+	- can be used for any associative operation. 
+
+	- can be used to effectively compute Fibonacci numbers.
+
+	- Time Complexity: O(logn)
+
+	- Code:
+	ll binary_exponentiation(ll a, ll b) {
+		ll ret = 1;
+		while(b > 0) {
+			if(b & 1) res *= a;
+			a *= a;
+			b >>= 1;
+		}
+
+		return ret;
+	}
+
+2. Euclid GCD:
+	- The running time of the algorithm is estimated by Lame's theorem, which establishes a surprising connection between Eucledian algorithm and Fibonacci numbers. 
+
+	- If b < F_n, then Euclidean algorithm performs at most n-2 recursive calls. Moreover, the worst case is a = F_n and b = F_(n-1). 
+
+	- Time Complexity: O(min(a, b))
+
+	- Code:
+	int gcd(int a, int b) {
+		while(b) {
+			a %= b;
+			swap(a, b);
+		}
+
+		return a;
+	}
+
+	- Optimised Code:
+	int gcd(int a, int b) {
+	    if (!a || !b) return a | b;
+	    unsigned shift = __builtin_ctz(a | b);
+	    a >>= __builtin_ctz(a);
+	    do {
+	        b >>= __builtin_ctz(b);
+	        if (a > b)
+	            swap(a, b);
+	        b -= a;
+	    } while (b);
+	    return a << shift;
+	}
+
+3. Extended Euclidean algorithm:
+	- This algorithm also calculates the two integers x & y such that a*x + b*y = gcd(a, b) (Bezout's identity)
+
+	- 
+
+4. Sieve of Erastothenes:
+
+
+
+
+--> SEARCHING:
+
+1. Binary Search:
+
+
+--> STRINGS:
+
+1. String Hashing:
+	- 
+
+2. Rabin-Karp:
+
+3. Boyer-Moore:
+
+4. KMP:
+
+
+--> GRAPHS:
+
+1. Dijkstra:
+
+2. Prim's MST:
+
+3. Kruskal's MST:

@@ -1,0 +1,578 @@
+- TEMPLATES:
+	- create generic functions or classes.
+
+	- Templates are expanded at compiler time.
+	
+	- template<typename T> // before the code for function or class
+	
+	- templates can accept multiple arguments. 
+	
+	- function overloading is when you want to perform different operations for different data types while templates are used to perform similar operations. Both are examples of polymorphism.
+	
+	- Templates can accept non-type arguments. However, these must be const because the compiler needs to create the functions/classes at compile time. 
+
+
+- NAMESPACE:
+	- Allows the programmer to group entities that otherwise would have global scope into narrower scopes, giving them namespace scope. 
+
+	- Syntax: namespace name {}
+
+	- Namespace declarations appear only at global scope. 
+
+	- Only the declarations can be provided inside the namespace while the definitions are provided outside. 
+
+	- Namespaces with same names refer to only one namespace. 
+
+	- Unnamed namespaces are automatically named uniquely by the compiler. These are used as alternatives to static variables and functions. It is a useful way of creating variables and functions that are unique to that translation unit. 
+
+	- The variables of an unnamed namespace can be used without the scope operator. 
+	namespace {//code} --> namespace unique-name {}
+					 	   using unique-name;
+					 	   namespace unique-name {//code}
+
+	- Namespaces can be nested and can also use the inline keyword. 
+
+
+- REGULAR EXPRESSIONS:
+	- #include<regex>
+	  smatch matches;
+	  regex reg("(ape[^ ]?"); 
+
+	- 
+
+
+- There are 4 builtin functions that are important:
+	1. __builtin_popcount(x): returns the number of 1's in the binary representation of x. Similarly, use popcountl() and popcountll.
+
+	2. __builtin_parity(x): returns true if the number is odd and false otherwise. 
+
+	3. __builtin_clz(x): returns the number of Leading Zeroes.
+
+	4. __builtin_ctz(x): returns the number of Trailing Zeroes.
+
+
+- VIRTUAL FUNCTIONS:
+	- It is a function defined in the derived class which shares its signature with another function defined in the base class- achieves runtime polymorphism.
+
+	- These cannot be static functions or FRIENDS of other classes.
+
+	- They have pointer-like access.
+
+	- On run time, if a virtual function is called, the compiler transcends through all functions with same signature and calls the last-standing function. 
+
+	- Working of virtual functions:
+		- 
+
+	- Pure virtual functions: 
+		- Example: virtual void s() = 0;
+		- Only abstract classes can have such pure virtual functions defined in their body.
+		- Hence, objects cannot be instantiated using abstract classes.
+		- Abstract classes/Interfaces are inherit-only classes. 
+
+	- Virtual Base Class:
+		- 
+
+
+- ==/equals:
+	- == compared for object identity, that is checking whether the operands are two references to the same area of memory.
+
+	- equals compares for equality in the logical values.
+
+	- If the equals function is implemented such that all the compound members are also checked using equals recursively, the check is said to be DEEP. Else, the equality check is said to be SHALLOW.
+
+
+- HashMaps:
+	- Hash tables in C++ STL are implemented using two different containers depending on the usage of the elements.
+
+	- The two variants are as follows:
+		1. unordered_map: 
+			- stores the keys in random order 
+			- insert and access are O(1) operations 
+			- implemented using hash tables with a well-defined hash function
+		2. map: 
+			- stores the keys in an ordered fashion
+			- insert, access, and delete are O(logn) operations
+			- implemented using Red-Black tree. 
+
+
+- ENUMERATED TYPES:
+	- It is a user-defined data type that can be assigned some limited values. 
+
+	- Syntax: enum Gender {Male, Female};
+			  Gender var-name = Male;
+
+	- Enumerated types can also be used in switch statements and for indexing similar to arrays. 
+
+
+- POINTERS:
+	- Syntax: datatype *var-name;
+
+	- Pointer arithmetic is meaningless unless performed on an array.
+
+	- Array Decay: the loss of type and dimensions of an array. 
+
+
+- SMART POINTERS:
+	- 
+
+
+- FUNCTION POINTERS & LAMBDAS:
+	- It is a way to assign a function to a variable so that functions can be used as a part of the logic.
+
+	- Syntax: return-type(*var-name)(parameters);
+
+	- Using typedef to make the code easy to read:
+		typedef void(*function-name)(paremeter-list);
+
+	- Lambdas are simply anonymous functions. These are used while using throw-away functions.
+
+	- Syntax: [](parameter-list) {//function code}
+
+	- [] is known as capture clause. Used to capture variables from the external world. 
+
+
+- Inline Functions:
+	- Invoking a function call incurs overhead of storing the arguments on the stack and shifting control. 
+
+	- This overhead is significant for small functions whose running time itself is less than the overhead.
+
+	- Defining a function as inline is a way of getting rid of the overhead. 
+
+	- An inline function is substituted by its definition at each invocation. This expansion is done at the compile time.
+
+	- Syntax: inline return-type function-name(parameters) {
+		// function code
+	}
+
+	- Compiler ignored the request to make a function inline if the function:
+		1. contains a loop
+		2. is recursive
+		3. contains static variables
+		4. contains switch or goto statements
+
+	- Inline functions can lead to increase in the number of registers used to store a variable. It can also lead to huge binary executable file sizes.
+
+	- Virtual functions cannot be inlined.
+
+	- All functions defined inside a class are by default inline.
+
+
+- Object Oriented Programming:
+	- Structured programming: divide the program into functions and modules. Importance of functions over data. Eg: C, PASCAL
+
+	- Procedural programming: top-down approach. Data is global and therefore, not secured. Eg: FORTRAN, COBOL. 
+
+	- A class is the blueprint using which objects are created. The program sees objects, not the class.
+
+	- Data Abstraction: 
+		1. Physical Level: describes how the records are stored; often hidden from the user.
+
+		2. Logical Level: describes the relationships with the data.  
+
+		3. View Level: the user gets to view the object at this level. 
+
+	- Encapsulation: the idea of wrapping data and the methods within one unit. Helps to hide the internal state representation of the object from the outside - abstraction.
+
+	- Inheritance:
+		- The ability of one class to inherit capapbilities or properties of another class. 
+		
+		- Syntax: class sub-class : access-specifier super-class {};
+
+		- private: same as the super class.
+		  protected: public and protected of super class are protected.
+		  private: all are private.
+
+		- The private members and methods of super class are inaccessible. 
+
+		- Types of inheritance:
+			1. Single inheritance
+			2. Multiple inheritance: 
+				- a class inherits from more than one classes.
+				- Syntax: class sub-class : access-specifier super-class1, access-specifier super-class2, ...
+			3. Multilevel inheritance: 
+
+	- Polymorphism: the ability of data or function to be processed in more than one form depending on the context.
+		1. Compile time: function overloading, operator overloading
+		2. Run time: virtual functions
+
+	- A class definition is not allocated any memory. 
+
+	- Dynamic binding: the code to be executed in response to a function call is decided at run time. This is implemented using Virtual Functions.
+
+
+	- There are 3 access modifiers: 
+		1. private: visible only to functions inside the class or friend functions/classes.
+		2. public: visible to all objects and functions
+		3. protected: visible to the class and all derived classes.
+
+	- Friend class/function: 
+		- A friend class can access private and protected members of other class in which it is declared as friend. 
+
+		- Friendship is neither mutual nor inherited. 
+		
+		- Syntax:
+			class Node {
+			private:
+				//code
+				friend class LinkedList;
+				friend int LinkedList::search();
+			};
+
+	- Constructors: 
+		- There are 3 types of constructors:
+			1. default
+			2. parametrised
+			3. copy
+
+		- Copy Constructor:
+			- A copy constructor creates a new object that is an exact copy of the existing object. 
+			
+			- Syntax: class-name (const class-name &existing-object);
+
+			- A user-defined copy constructor is required only if the object has pointers or any runtime allocation. 
+
+			- The default copy constructor performs Shallow Copy.
+
+			- class-name t2 = t1 // calls copy constructor
+			  class-name t3; t3 = t1; // calls assignment operator
+
+			- A private copy constructor makes the object non-copyable. 
+
+	- Destructor:
+		- It is another special member function when the object runs its course of scope or is to be deleted. 
+
+		- Syntax: ~class-name() {}
+
+		- 
+
+	- Function Overloading:
+		- functions that differ only in the return type cannot be overloaded.
+
+		- functions that differ only in const or volatile cannot be overloaded.
+
+		- 
+
+
+- ARRAYS:
+	
+
+
+- RANDOM NUMBERS:
+	- The library allows to produce random numbers using combinations of generators and distributions.
+		- Generators: Objects that generate uniformly distributed numbers.
+		- Distributions: Objects that transform sequences of numbers generated by a generator into sequences of numbers that follow a specific random variable distribution, such as Uniform, Normal, or Binomial.
+
+	- Syntax:
+		default_random_engine generator;
+		uniform_int_distribution<int> distribution(1, 6);
+		int dice_roll = distribution(generator);
+
+	- These algorithms need a seed as a source of randomness, and this seed can either be a single value or an object with a very specific generate() member function.
+
+
+- STRINGS:
+	- String is a class while character array is simply an array. 
+
+	- Size of the character array has to be statically allocated and no more can be allocated at run time if required.
+
+	- string::npos: It is a static constant variable set to -1. It is used to indicate "non position". It is better to use npos over -1 as it improves legibility. 
+
+	- append() is preferred over += because of the overhead involved in creating another string object in the latter case.
+
+	- Initialising a string:
+		1. string str1("Hello World!");
+		2. string str2(str1);
+		3. string str3(10, 'h');
+		4. string str4(str1, 5, 2); // from 5th index and of length 2
+		5. string str5(str1.begin(), str1.begin()+3);
+
+	- Supported operations:
+		1. getline(input-stream, string): store a line of input from the stream into the string object.
+		2. push_back(x): append the character x to the string.
+		3. pop_back(): delete the last character from the string.
+		4. capacity(): returns the memory allocated to the object.
+		5. resize(val, c): resizes the string's size to val. If required, c's are appended to attain the given length.
+		6. length(): returns the length of the string. 
+		7. shrink_to_fit(): sets the capacity to equal to its size.
+		8. begin(), end()
+		9. copy(char-array, len, pos): copies the string's contents into the character array.
+		10. swap(): swaps the contents of the two strings.
+		11. at(), front(), back() have their usual meanings.
+		12. append(str), append(str, ind, len): appends the string str.
+		13. replace(a, b, str): replaces b characters starting at a with the string str.
+		14. find(str): finds the first index where the substring str is found. If not found, the iterator is set to string::npos. Similarly definded, rfind(str) returns the last occurrence, if any.
+			- find(str, pos): finds the substring str at or after index pos. 
+		15. substr(ind, len): returns the substring starting at index and of length len. If len is not provided, the substring extends to the end of string.
+		16. erase(a, b), erase(it1, it2): deleted b characters starting at index a.
+		17. compare(str2): returns 0 if the two strings are equal, else the sign depends on the lexicographical order of the two strings. 
+		18. insert(pos, str): inserts the string str at index pos.
+		19. empty(): test whether the string is empty. returns a boolean value.
+		20. clear(): empties the string.
+		21. stoi(str): returns an integer that is encoded in the string str.
+		22. to_string(val): returns the integer argument's string equivalent. 
+
+
+- Standard Template Library:
+	- STL has four components.
+		- Algorithms
+		- Containers
+		- Functions
+		- Iterators
+
+	// Algorithms:
+		- swap(x, y): 
+			- swaps the values of the two variables x and y.
+
+		- sort(): 
+			- Internally uses IntroSort. Uses quick sort; if slower than superrlinear time, switches to heap sort; if the array size is too small, then switches to insertion sort. 
+			- sort(startaddress, endaddress, comparator)
+			- use greater<int>() to sort in descending order.
+			- sorts containers that have random access.
+
+		- binary_search():
+			- binary_search(startaddress, endaddress, valuetofind)
+			- returns a boolean value.
+
+		- reverse():
+			- reverse(first_iterator, second_iterator)
+
+		- rotate():
+			- rotate(first, middle, last)
+			- the iterator middle points to the position where the element first is shifted to after the rotation.
+
+		- max_element(), min_element():
+			- max_element(first_iterator, second_iterator)
+			- returns an iterator to the maximum element.
+
+		- accumulate():
+			- accumulate(first_iterator, second_iterator, initial_value_of_sum)
+			- returns the summation of all values in the range. 
+
+		- count():
+			- count(first_iterator, second_iterator, value)
+			- returns the number of occurences of "value".
+
+		- find():
+			- find(first_iterator, second_iterator, value)
+			- returns the first occurrence of the element "value".
+			- if not found, returns the second_iterator.
+
+		- lower_bound():
+			- lower_bound(first_iterator, second_iterator, value)
+			- returns an iterator to the first element that is greater than or equal to value.
+
+		- upper_bound():
+			- upper_bound(first_iterator, second_iterator, value)
+			- returns an iterator to the first element that is greater than value.
+
+		- vector.erase():
+			- vec.erase(5);
+			- deleted the element at position 5 and resizes the vector.
+
+		- arr.erase(unique(arr.begin(),arr.end()),arr.end()):
+			- erases all the duplicates from the vector. 
+
+		- next_permutation(), prev_permutation():
+			- takes two iterators as arguments that indicate the range.
+			- modifies the vector to the next/previous permutation.
+
+		- distance():
+			- distance(first_iterator, desired_position):
+			- retuurns the distance.
+
+		- is_permutation():
+			- is_permutation(first_begin_iterator, first_last_iterator, second_first_iterator)
+			- returns a boolean value.
+
+		- search():
+			- search(first_begin_iterator, first_last_iterator, second_first_iterator, second_last_iterator).
+			- returns an iterator.
+
+		- iota():
+			- iota(it1, it2, val)
+			- stores consecutive values beginning at val in the given range.  
+
+		- isdigit(int c): 
+			- returns a boolean value that indicates whether c is a decimal digit.
+			- the argument can be a variable of any type but the function casts it into int. 
+			- Similarly defined, isalpha(int c).
+
+
+	// Containers:
+		- vector:
+			- no resizing happens upon deletion.
+			
+			- Supported operations:
+				1. vector<int> arr(n, 10): creates a vector of n elements, each set to 10.
+				2. vector<int> vec(it1, it2): copies all the elements from the range.
+			    3. iterators: begin(), end(), rbegin(), rend()
+			    4. size(): returns the number of elements.
+				5. capacity(): returns the size of the storage space allocated to the vector in terms of number of elements.
+				6. resize(n, val): the vector contains exactly n elements. If the size < n, (n-size) elements initialised to val are appended.
+			 	7. empty(): returns a boolean value indicating if the vector is empty.
+				8. reserve(n): changes the capacity, not size.
+				9. front(): returns the first element.
+				10. back(): returns the last element. 
+				11. push_back(val): appends val to the vector.
+				12. pop_back(): removes the last element from the vector. The object's destructor is called. 
+				13. insert(pos, val): inserts val at position pointed by iterator pos. returns iterator to the newly inserted element.
+				14. insert(pos, it1, it2): copies all elements from it1 to it2 starting at pos.
+				15. clear(): deleted all the elements and sets the size to 0.
+				16. erase(pos) or erase(it1, it2): delete element (or elements within the range) pointed by the iterator pos.
+				17. at(index): returns the value arr[index]. It is superior than the [] dereferencer as it has a strong out_of_range exception policy.
+				18. swap(vec2): swaps the elements with another vector vec2. Throws error if the vectors are not of the same type. 
+
+
+		- arrays:
+			- An array is a series of elements of the same type placed in contiguous memory locations referenced by adding an index to a unique identifier. 
+
+			- Regular arrays of local scope are by default uninitialised. 
+
+			- int foo[5] = {} //sets all values to 0
+			  int foo[5] = {2, 3} // foo = [2, 3, 0, 0, 0]
+
+			- Arrays defined in namespaces are initialised to default values. 
+
+			- An array can be passed to a function by address using its name. The function definition takes the following parameter:
+				int arr[]
+
+			- If the array is multi-dimensional, all the dimensions except the first must be included in the function definition.
+
+			- C++ also provides a library array template.
+			  Syntax: array<int, 3> arr = {1, 2, 3};
+
+			- The library array supports begin, end, and size operations. 
+			
+
+		- stack: (complete)
+			- It is a container adaptor - these are not full container classes, but classes that provide a specific interface relying on an object of one of the container classes to handle the elements. 
+			
+			- Implements the Last In First Out (LIFO) strategy such that elements are inserted and deleted at the top end only.
+
+			- Implicitly used to maintain function calls and explicitly used for recursion.
+
+			- The standard container classes vector, deque, and list fulfill these requirements. By default, deque is used to implement this class.
+
+			- A stack can also be implemented using two queues.
+
+			- Supported operations:
+				1. empty(): returns a boolean value indicating if the stack is empty.
+				2. size(): returns the size of stack
+				3. top(): returns (a reference to) the first/top element.
+				4. push(e): inserts the element e at the top of the stack.
+				5. pop(): DELETED the top element. Leads to error if called on an empty stack. 
+				6. swap(stack2): swaps the contents of the two stacks. Both the stacks must be of the same type.
+
+		- queue: (complete)
+			- It is a container adaptor
+
+			- deque or list STL classes may be used to implement the container adaptor. By default, deque is used.
+
+			- Implements the First In First Out (FIFO) strategy. Elements are inserted at the back and are deleted from the front. 
+
+			- Can be implemented using the following DS:
+				1. linked list
+				2. vector
+				3. 2 stacks
+
+			- Supported operations:
+				1. empty(): returns a boolean value indicating if the queue is empty
+				2. size(): returns the size of the queue
+				3. swap(): exchange the contents of the two queues however, both must be of the same type (because of memory allocated to each element)
+				4. front() and back(): returns (a reference to) the front and back elements
+				5. push(): inserts the element at the back
+				6. pop(): DELETES the front element
+
+
+		- list:
+			- 
+
+
+		- forward_list:
+
+
+		- deque: (complete)
+			- Double ended queues are sequential containers. 
+
+			- Deque supports constant time access and also ammortised constant time insertions and deletions from both ends.
+
+			- This data structure is implemented using a map to fixed size chunks of memory. Every time more memory is required, a new chunk is allocated and its address is pushed to the container. 
+
+			- Deque is extremely similar to vectors. It should be used ONLY when the insertions and deletions mostly take place at the ends.
+
+			- Supported operations: similar to vector, except:
+				1. push_front(x)
+				2. pop_front()
+				3. capacity() is not supported
+				4. reserve() is not supported
+
+			- Vectors have an upper hand over deques in deallocation of the memory.
+
+
+		- priority_queue:
+			- It is a container adaptor designed such that the first element is the greatest (according to some weak ordering comparator) 
+
+			- Used to implement the data structure HEAP as it allows insertion of elements and retrieval of only the maximum element - max heap. 
+
+			- It may be implemented using vector or deque. By default, vector is used to implement priority_queue.
+
+			- The container supports random access iterators. These are required to maintain the internal heap structure at all times. 
+
+			- Heapify function: left child and right child in the binary heap are stored at indices 2*i and 2*i + 1. If the current element is maximum, then halt. Else, swap with the maximum of the two children and continue. 
+
+			- Heap is implemented using an array because it is a complete binary tree with height = O(logn).
+
+			- priority_queue<T, container, greater<int> > creates a min-heap data structure.
+
+			- Supported operations:
+				1. priority_queue<T, container, compare>: compare is a binary predicate that takes two elements and returns true if a < b and false otherwise - constructor.
+				2. empty(): returns a boolean value indicating if the priority_queue is empty
+				3. size(): returns the size of the priority_queue
+				4. top(): returns a reference to the top element
+				5. push(e): inserts the element e to the container
+				6. pop(): removes the top element
+				7. swap(pq2): swaps the contents of the two priority_queues.
+
+
+		- set:
+
+		- multiset:
+
+		- unordered_set:
+
+		- unordered_multiset:
+
+		- map:
+
+		- multimap:
+
+
+		- unordered_map:
+			- Associative containers that store elements formed by the combination of a key value and a mapped value. Allows fast retrieval of elements based on their keys.
+
+			- The elements are not sorted in any particular order. 
+
+			- Uses hash tables to allow for fast access. No two elements can have equivalent keys.
+
+			- Iterators of a unordered_map container have access to both the key and the mapped value. 
+
+			- On average, the cost of search, insert, and delete is O(1).
+
+			- empty(), size(), begin(), end() as usual.
+
+			- find(key): returns an iterator to the element whose key is equal to the argument. If not found, the iterator points to the end of the container.
+
+			- count(key): returns 0 or 1
+
+			- insert(pair): inserts the key-value pair in the hash table.
+
+			- erase(): the argument can either be an iterator or a key value or a range indicated by two iterators.
+			
+
+		- unordered_multimap:
+
+- Functors:
+	- 
+
+- Iterators:
+	- 
