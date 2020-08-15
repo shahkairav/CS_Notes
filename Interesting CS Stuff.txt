@@ -50,19 +50,3 @@
 	- Sequential elements are accessed by indices while associative elements are accessed using keys. 
 
 
-- Bloom Filters:
-	- It is a data structure designed to tell you, rapidly and memory-efficiently, whether an element is present in a set.
-
-	- The price paid for this efficiency is that it is a probabilistic data structure: either the element is DEFINITELY not in the set or it MAYBE in the set.
-
-	- 
-
-
-- Fibonacci Heaps:
-	- This data structure is an improvisation of binomial heaps by efficiently implementing the "decrease_key" and "delete" function in ammortised O(1) time.
-
-	- 
-
-
-- Red-Black Trees:
-	- 

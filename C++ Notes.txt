@@ -116,6 +116,33 @@
 	- 
 
 
+- Functors: (complete)
+	- It is essentially a class that defines the operator (). This lets the user create objects that "look" like functions.
+
+	- Example:
+		struct add_x {
+			add_x(int val) : x(val) {}
+			int operator()(int y) const {
+				return x + y;
+			}
+
+		private:
+			int x;
+		}
+
+		add_x add42(42);
+		int i = add42(8);
+		// add42 is an object, NOT a function
+
+		transform(in.begin(), in.end(), out.begin(), add_x(1));
+
+	- Functors can contain state while functions cannot. Due to this, they are widely used to create generic algorithms. 
+
+	- These are passed as arguments to other functions such as std::transform and other standard library algorithms. Function pointers can also be passed but they are not flexibile as functors.
+
+	- Function pointers are dereferenced at run time while functors can be linked at compile time and even inlined. Hence, functors are given priority over function pointers. 
+
+
 - FUNCTION POINTERS & LAMBDAS:
 	- It is a way to assign a function to a variable so that functions can be used as a part of the logic.
 
@@ -254,7 +281,24 @@
 
 
 - ARRAYS:
-	
+	- An array is a series of elements of the same type placed in contiguous memory locations referenced by adding an index to a unique identifier. 
+
+	- Regular arrays of local scope are by default uninitialised. 
+
+	- int foo[5] = {} //sets all values to 0
+	  int foo[5] = {2, 3} // foo = [2, 3, 0, 0, 0]
+
+	- Arrays defined in namespaces are initialised to default values. 
+
+	- An array can be passed to a function by address using its name. The function definition takes the following parameter:
+		int arr[]
+
+	- If the array is multi-dimensional, all the dimensions except the first must be included in the function definition.
+
+	- C++ also provides a library array template.
+	  Syntax: array<int, 3> arr = {1, 2, 3};
+
+	- The library array supports begin, end, and size operations. 
 
 
 - RANDOM NUMBERS:
@@ -397,6 +441,11 @@
 			- the argument can be a variable of any type but the function casts it into int. 
 			- Similarly defined, isalpha(int c).
 
+		- advance(it, n):
+			- advances the iterator 'it' by 'n' positions.
+			- if the iterator has random-access, then the +/- operator is called once. 
+			- else, the ++/-- operator is called 'n' times.
+
 
 	// Containers:
 		- vector:
@@ -424,25 +473,6 @@
 
 
 		- arrays:
-			- An array is a series of elements of the same type placed in contiguous memory locations referenced by adding an index to a unique identifier. 
-
-			- Regular arrays of local scope are by default uninitialised. 
-
-			- int foo[5] = {} //sets all values to 0
-			  int foo[5] = {2, 3} // foo = [2, 3, 0, 0, 0]
-
-			- Arrays defined in namespaces are initialised to default values. 
-
-			- An array can be passed to a function by address using its name. The function definition takes the following parameter:
-				int arr[]
-
-			- If the array is multi-dimensional, all the dimensions except the first must be included in the function definition.
-
-			- C++ also provides a library array template.
-			  Syntax: array<int, 3> arr = {1, 2, 3};
-
-			- The library array supports begin, end, and size operations. 
-			
 
 		- stack: (complete)
 			- It is a container adaptor - these are not full container classes, but classes that provide a specific interface relying on an object of one of the container classes to handle the elements. 
@@ -485,7 +515,24 @@
 
 
 		- list:
-			- 
+			- It is a sequence container that allows non-contiguous memory allocation.
+
+			- It implements the double linked list data structure. Traversal is slow but insertion and deletion are constant time operations.
+
+			- Supported operations:
+				1. front(): returns the value of first element
+				2. back(): returns the value of last element
+				3. push_front(g): adds the element 'g' at the beginning of the list
+				4. push_back(g): adds the element 'g' at the end of the list
+				5. pop_front(): removes the first element
+				6. pop_back(): removes the last element
+				7. begin(), end(): usual iterators
+				8. empty(): retuurns a boolean value indicating if the list is empty
+				9. insert(): 
+				10. assign():
+					- l1.assign(3, 10): initialises list with 3 values, each equal to 10.
+					- l1.assign(it1, it2): initialises l1 list with elements copied in the range [it1, it2). The iterators can also be pointers.
+				11. 
 
 
 		- forward_list:
@@ -571,8 +618,7 @@
 
 		- unordered_multimap:
 
-- Functors:
-	- 
+
 
 - Iterators:
 	- 

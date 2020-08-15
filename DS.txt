@@ -9,7 +9,6 @@
 - Heaps:
 
 - Binary Trees:
-	- 
 
 - Disjoint Set Union:
 
