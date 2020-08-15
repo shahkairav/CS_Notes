@@ -454,8 +454,8 @@
 			- Supported operations:
 				1. vector<int> arr(n, 10): creates a vector of n elements, each set to 10.
 				2. vector<int> vec(it1, it2): copies all the elements from the range.
-			    3. iterators: begin(), end(), rbegin(), rend()
-			    4. size(): returns the number of elements.
+				3. iterators: begin(), end(), rbegin(), rend()
+				4. size(): returns the number of elements.
 				5. capacity(): returns the size of the storage space allocated to the vector in terms of number of elements.
 				6. resize(n, val): the vector contains exactly n elements. If the size < n, (n-size) elements initialised to val are appended.
 			 	7. empty(): returns a boolean value indicating if the vector is empty.
@@ -514,10 +514,12 @@
 				6. pop(): DELETES the front element
 
 
-		- list:
+		- list: (complete)
 			- It is a sequence container that allows non-contiguous memory allocation.
 
 			- It implements the double linked list data structure. Traversal is slow but insertion and deletion are constant time operations.
+
+			- The iterators support both ++ and -- operators, unlike forward_list.
 
 			- Supported operations:
 				1. front(): returns the value of first element
@@ -528,12 +530,29 @@
 				6. pop_back(): removes the last element
 				7. begin(), end(): usual iterators
 				8. empty(): retuurns a boolean value indicating if the list is empty
-				9. insert(): 
+				9. insert(it, num_of_element, val): inserts a node with value = val at position indicated by it. If num_of_element argument is provided, num_of_element copies are inserted.
 				10. assign():
 					- l1.assign(3, 10): initialises list with 3 values, each equal to 10.
 					- l1.assign(it1, it2): initialises l1 list with elements copied in the range [it1, it2). The iterators can also be pointers.
-				11. 
-
+				11. erase(it1, it2): 
+						- removes elements within the range. The second iterator is optional - if not provided, the element pointed at by it1 is removed.
+						- returns an iterator to the next element.  
+				12.	remove(x): 
+						- removes all elements from the list that have value equal to x.
+						- does not return a value
+				13. remove_if(predicate): removes all elements from the list that correspond true to the predicate (functor or a function pointer) passed as an argument.
+				14. reverse(): reverses the entire list. The generic algorithm offered by STL cannot be used because the container does not support random access.
+				15. size(): returns the number of elements present in the list.
+				16. sort(compare): 
+					- sorts the elements according to the comparator 'compare', if provided.  
+					- the sorting is stable i.e., relative ordering of elements with equal values is maintained.
+					- Time Complexity: O(nlogn)
+				17. unique(equality_pred): removes all duplicate consecutive elements from the list. The equality predicate is optional.
+				18. clear(): removes all the elements from the list making its size 0.
+				19. = operator: a list can be set to another list. 
+				20. swap(list2): swaps the contents of the two lists.
+				21. splice(it_pos, list2, it1, it2): transfers elements of list2 in range [it1, it2) at position indicated by it_pos.
+				22. merge(list2, comparator): merges two sorted lists into one. 
 
 		- forward_list:
 
